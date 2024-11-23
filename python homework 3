@@ -1,0 +1,37 @@
+class Tree:
+  def __init__(self, species, height):
+    self.species = species
+    self.height = height
+
+  def grow(self, amount):
+    self.height += amount
+
+  def __str__(self):
+    return f"Species: {self.species}, Height: {self.height}"
+
+class Forest:
+  def __init__(self):
+    self.trees = []
+
+  def plant_tree(self, species, height):
+    tree = Tree(species, height)
+    self.trees.append(tree)
+    print(f"A {species} tree has been planted!")
+
+  def grow_all_trees(self, amount):
+    for tree in self.trees:
+      tree.grow(amount)
+
+  def __str__(self):
+    tree_list = [str(tree) for tree in self.trees]
+    return "\n".join(tree_list)
+
+
+if __name__ == "__main__":
+  forest = Forest()
+  forest.plant_tree("Oak", 10)
+  forest.plant_tree("Maple", 15)
+  forest.plant_tree("Pine", 20)
+  print(forest)
+  forest.grow_all_trees(5)
+  print(forest)
